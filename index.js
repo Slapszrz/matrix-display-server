@@ -31,7 +31,6 @@ app.post("/fill", (req, res) => {
     })
 })
 
-
 app.post("/pixel", (req, res) => {
     const { color, position } = req.body;
 
@@ -46,13 +45,22 @@ app.post("/pixel", (req, res) => {
     })
 })
 
-
 app.post("/image", async (req, res) => {
     const { image } = req.body;
 
     if (!image) res.status(400).send({ message: "Missing field 'image'." })
 
     display.image(image)
+
+    res.send({})
+})
+
+app.post("/gif", async (req, res) => {
+    const { gif } = req.body;
+
+    if (!gif) res.status(400).send({ message: "Missing field 'gif'." })
+
+    display.gif(gif)
 
     res.send({})
 })

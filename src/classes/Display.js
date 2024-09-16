@@ -1,8 +1,8 @@
-// const LedMatrix = require("easybotics-rpi-rgb-led-matrix");
-class LedMatrix {
-    constructor(height, width) {
-    }
-}
+const LedMatrix = require("easybotics-rpi-rgb-led-matrix");
+// class LedMatrix {
+//     constructor(height, width) {
+//     }
+// }
 
 const pixels = require('image-pixels');
 const decodeGif = require("decode-gif");
@@ -49,8 +49,6 @@ class Display {
             this.displayUint8Array(frame.data, width, height)
             await sleep(frame.timeCode)
         }
-
-        console.log(frames[0].data[0])
     }
 
     displayUint8Array(rgbArray, width, height) {
@@ -62,10 +60,10 @@ class Display {
                 y: Math.floor(i / width)
             }
 
-            console.log(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
-            // this.matrix.setPixel(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
+            // console.log(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
+            this.matrix.setPixel(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
         }
-        // this.update()
+        this.update()
     }
 
 }

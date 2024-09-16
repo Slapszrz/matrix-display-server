@@ -1,5 +1,5 @@
 const express = require("express");
-const {Display} = require("./classes/Display");
+const {Display} = require("./src/classes/Display");
 
 const app = express();
 const PORT = 8000;

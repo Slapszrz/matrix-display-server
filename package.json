@@ -1,0 +1,17 @@
+{
+  "name": "matrix-display-server",
+  "version": "1.0.0",
+  "description": "The Server for my Matrix display",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Slaps_zrz",
+  "license": "ISC",
+  "dependencies": {
+    "easybotics-rpi-rgb-led-matrix": "^0.4.1",
+    "decode-gif": "^1.0.1",
+    "express": "^4.21.0",
+    "image-pixels": "^2.2.2"
+  }
+}

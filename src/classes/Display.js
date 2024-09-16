@@ -17,12 +17,12 @@ class Display {
     }
 
     fill(color) {
-        this.matrix.fill(...color);
+        this.matrix.fill(color.r, color.g, color.b);
         this.update()
     }
 
     pixel(position, color) {
-        this.matrix.setPixel(...position, ...color);
+        this.matrix.setPixel(position.x, position.y, color.r, color.g, color.b);
         this.update()
     }
 
@@ -39,7 +39,7 @@ class Display {
                 y: Math.floor(i / width)
             }
 
-            this.matrix.setPixel(...position, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
+            this.matrix.setPixel(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
         }
         this.update()
     }

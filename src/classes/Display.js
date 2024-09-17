@@ -9,6 +9,8 @@ const decodeGif = require("decode-gif");
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
+const rgba2rgb = arr => arr.filter((item, index) => ((index+1)%4 != 0))
+
 class Display {
     constructor(height, width) {
         this.matrix = new LedMatrix(height, width);
@@ -36,7 +38,7 @@ class Display {
     async image(base64Data) {
         const { data, width, height } = await pixels(base64Data)
 
-        const rgbArray = new Uint8Array(data.filter((item, index) => ((index+1)%4 != 0)))
+        const rgbArray = new Uint8Array(rgba2rgb(data))
 
         this.displayUint8Array(rgbArray, width, height)
     }
@@ -46,7 +48,8 @@ class Display {
 
         for (let i=0; i<frames.length; i++) {
             const frame = frames[i]
-            this.displayUint8Array(frame.data, width, height)
+
+            this.displayUint8Array(new Uint8Array(rgba2rgb(frame.data)), width, height)
             await sleep(frame.timeCode)
         }
     }

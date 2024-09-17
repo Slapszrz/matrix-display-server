@@ -20,6 +20,16 @@ app.post("/clear", (req, res) => {
     res.send({})
 })
 
+app.post("/brightness", (req, res) => {
+    const { brightness } = req
+
+    if (!brightness) res.status(400).send({ message: "Missing field 'brightness'." })
+
+    display.brightness( brightness );
+
+    res.send({})
+})
+
 app.post("/fill", (req, res) => {
     const { color } = req.body;
 
@@ -46,12 +56,13 @@ app.post("/pixel", (req, res) => {
     })
 })
 
+
 app.post("/image", async (req, res) => {
     const { image } = req.body;
 
     if (!image) res.status(400).send({ message: "Missing field 'image'." })
 
-    display.image(image)
+    // display.image(image)
 
     res.send({})
 })
@@ -61,7 +72,7 @@ app.post("/gif", async (req, res) => {
 
     if (!gif) res.status(400).send({ message: "Missing field 'gif'." })
 
-    display.gif(gif)
+    // display.gif(gif)
 
     res.send({})
 })

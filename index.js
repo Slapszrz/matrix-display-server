@@ -23,7 +23,10 @@ app.post("/clear", (req, res) => {
 app.post("/brightness", (req, res) => {
     const { brightness } = req
 
-    if (!brightness) res.status(400).send({ message: "Missing field 'brightness'." })
+    if (!brightness) {
+        res.status(400).send({message: "Missing field 'brightness'."})
+        return
+    }
 
     display.brightness( brightness );
 
@@ -33,7 +36,10 @@ app.post("/brightness", (req, res) => {
 app.post("/fill", (req, res) => {
     const { color } = req.body;
 
-    if (!color) res.status(400).send({ message: "Missing field 'color'." })
+    if (!color) {
+        res.status(400).send({message: "Missing field 'color'."})
+        return
+    }
 
     display.fill(color);
 
@@ -45,8 +51,14 @@ app.post("/fill", (req, res) => {
 app.post("/pixel", (req, res) => {
     const { color, position } = req.body;
 
-    if (!color) res.status(400).send({ message: "Missing field 'color'." })
-    if (!position) res.status(400).send({ message: "Missing field 'position'." })
+    if (!color) {
+        res.status(400).send({message: "Missing field 'color'."})
+        return
+    }
+    if (!position) {
+        res.status(400).send({message: "Missing field 'position'."})
+        return
+    }
 
     display.pixel(position, color)
 
@@ -60,7 +72,10 @@ app.post("/pixel", (req, res) => {
 app.post("/image", async (req, res) => {
     const { image } = req.body;
 
-    if (!image) res.status(400).send({ message: "Missing field 'image'." })
+    if (!image) {
+        res.status(400).send({message: "Missing field 'image'."})
+        return
+    }
 
     // display.image(image)
 
@@ -70,7 +85,10 @@ app.post("/image", async (req, res) => {
 app.post("/gif", async (req, res) => {
     const { gif } = req.body;
 
-    if (!gif) res.status(400).send({ message: "Missing field 'gif'." })
+    if (!gif) {
+        res.status(400).send({message: "Missing field 'gif'."})
+        return
+    }
 
     // display.gif(gif)
 

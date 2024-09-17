@@ -47,10 +47,10 @@ class Display {
         const { width, height, frames } = decodeGif(Buffer.from(base64Data, "base64"));
 
         for (let i=0; i<frames.length; i++) {
-            const frame = frames[i]
+            const { data, timeCode } = frames[i]
 
-            this.displayUint8Array(new Uint8Array(rgba2rgb(frame.data)), width, height)
-            await sleep(frame.timeCode)
+            this.displayUint8Array(new Uint8Array(rgba2rgb(data)), width, height)
+            await sleep(timeCode)
         }
     }
 

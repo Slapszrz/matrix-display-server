@@ -10,8 +10,9 @@
   "author": "Slaps_zrz",
   "license": "ISC",
   "dependencies": {
-    "easybotics-rpi-rgb-led-matrix": "^0.4.1",
+    "body-parser": "^1.20.3",
     "decode-gif": "^1.0.1",
+    "easybotics-rpi-rgb-led-matrix": "^0.4.1",
     "express": "^4.21.0",
     "image-pixels": "^2.2.2"
   }

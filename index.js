@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser')
 const {Display} = require("./src/classes/Display");
 
 const app = express();
@@ -6,7 +7,7 @@ const PORT = 8000;
 
 let display = new Display(64, 128);
 
-app.use( express.json() );
+app.use( bodyParser({ limit: "64mb" }) );
 
 app.listen(
     PORT,

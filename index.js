@@ -21,7 +21,7 @@ app.post("/clear", (req, res) => {
 })
 
 app.post("/brightness", (req, res) => {
-    const { brightness } = req
+    const { brightness } = req.body
     console.log(brightness)
     if (!brightness) {
         res.status(400).send({message: "Missing field 'brightness'."})

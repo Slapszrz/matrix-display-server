@@ -7,6 +7,9 @@ const PORT = 8000;
 
 let display = new Display(64, 128);
 
+display.fill({r: 255, g: 255, b: 255})
+display.brightness(0)
+
 app.use( bodyParser({ limit: "64mb" }) );
 
 app.listen(

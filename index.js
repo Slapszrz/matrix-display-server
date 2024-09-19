@@ -5,7 +5,7 @@ const {FrameManager} = require("./src/classes/FrameManager");
 // const pixels = require('image-pixels');
 const decodeGif = require("decode-gif");
 const {Frame} = require("./src/classes/Frame");
-const rgba2rgb = require("./src/functions/rgba2rgb")
+const {rgba2rgb} = require("./src/functions/rgba2rgb")
 
 const app = express();
 const PORT = 8000;

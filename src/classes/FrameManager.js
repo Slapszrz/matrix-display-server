@@ -26,11 +26,11 @@ class FrameManager {
     }
 
     playCurrentFrame() {
-        const currentFrame = this.queue[0]
+        const { data, width, height } = this.queue[0]
 
         console.log("start current frame")
 
-        this.display.displayUint8Array(currentFrame.data)
+        this.display.displayUint8Array(data, width, height)
 
         this.removeCurrentFrame()
     }

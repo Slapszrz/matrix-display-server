@@ -20,7 +20,8 @@ class FrameManager {
 
         console.log("starting next frame")
         console.log(onFrameEnd)
-        new Promise(resolve => setTimeout(currentFrame.frameTime)).then(() => onFrameEnd())
+        const frameTimer = new Promise(resolve => setTimeout(currentFrame.frameTime))
+        frameTimer.then(onFrameEnd)
 
         this.playCurrentFrame()
     }

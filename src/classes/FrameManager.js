@@ -1,12 +1,16 @@
 
 class FrameManager {
+    queue = []
+
     constructor(display, initialFrames) {
         this.display = display;
         this.setupQueue(initialFrames)
     }
 
     setupQueue(initialFrames) {
+        console.log(initialFrames)
         this.queue = initialFrames ? initialFrames : []
+        console.log(this.queue)
     }
 
     addQueueFrame(frame) {

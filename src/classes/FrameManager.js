@@ -45,4 +45,4 @@ class FrameManager {
     }
 }
 
-module.exports.DisplayManager=FrameManager
+module.exports.FrameManager=FrameManager

@@ -22,6 +22,7 @@ class FrameManager {
         console.log(onFrameEnd)
         const frameTimer = new Promise(resolve => setTimeout(currentFrame.frameTime))
         frameTimer.then(onFrameEnd)
+        frameTimer.catch(console.error)
 
         this.playCurrentFrame()
     }

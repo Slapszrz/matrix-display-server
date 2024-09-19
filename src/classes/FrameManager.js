@@ -15,12 +15,12 @@ class FrameManager {
     }
 
     startNextFrame() {
+        console.log(this.queue)
         const currentFrame = this.queue[0]
         const onFrameEnd = currentFrame ? this.startNextFrame : this.clearAll
 
         console.log("starting next frame")
         console.log(onFrameEnd)
-        console.log(this.queue)
         new Promise(resolve => setTimeout(resolve, currentFrame.frameTime)).then(() => {
             console.log("frame ended")
             onFrameEnd()

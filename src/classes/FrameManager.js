@@ -1,7 +1,5 @@
 
 class FrameManager {
-    queue = []
-
     constructor(display, initialFrames) {
         this.display = display;
         this.setupQueue(initialFrames)

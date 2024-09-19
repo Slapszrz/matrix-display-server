@@ -16,15 +16,17 @@ class FrameManager {
 
     startNextFrame() {
         const currentFrame = this.queue[0]
-        const onFrameEnd = currentFrame ? this.startNextFrame : this.clearAll
+        const onFrameEnd = currentFrame ? this.startNextFrameRecursive : this.clearAll
 
         console.log("starting next frame")
         console.log(onFrameEnd)
-        const frameTimer = new Promise(resolve => setTimeout(currentFrame.frameTime))
-        frameTimer.then(onFrameEnd)
-        frameTimer.catch(console.error)
+        new Promise(resolve => setTimeout(currentFrame.frameTime)).then(onFrameEnd).catch(console.error)
 
         this.playCurrentFrame()
+    }
+
+    startNextFrameRecursive() {
+        this.startNextFrame()
     }
 
     playCurrentFrame() {

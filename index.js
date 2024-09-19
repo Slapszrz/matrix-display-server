@@ -10,7 +10,7 @@ const app = express();
 const PORT = 8000;
 
 const display = new Display(64, 128);
-const frameManager = new FrameManager(display)
+const frameManager = new FrameManager(display, null)
 
 display.fill({r: 255, g: 255, b: 255})
 display.brightness(0)

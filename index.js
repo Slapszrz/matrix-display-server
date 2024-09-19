@@ -98,7 +98,7 @@ app.post("/gif", async (req, res) => {
         return
     }
 
-    const { width, height, frames } = decodeGif(Buffer.from(base64Data, "base64"));
+    const { width, height, frames } = decodeGif(Buffer.from(gif, "base64"));
 
     console.log("received gif with " + frames.length + " frames")
 

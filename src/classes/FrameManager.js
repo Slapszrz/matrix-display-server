@@ -20,6 +20,7 @@ class FrameManager {
 
         console.log("starting next frame")
         console.log(onFrameEnd)
+        console.log(this.queue)
         new Promise(resolve => setTimeout(resolve, currentFrame.frameTime)).then(() => {
             console.log("frame ended")
             onFrameEnd()

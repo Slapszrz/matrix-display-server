@@ -4,12 +4,7 @@ const LedMatrix = require("easybotics-rpi-rgb-led-matrix");
 //     }
 // }
 
-const pixels = require('image-pixels');
-const decodeGif = require("decode-gif");
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-const rgba2rgb = arr => arr.filter((item, index) => ((index+1)%4 != 0))
+// const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 class Display {
     constructor(height, width) {
@@ -52,7 +47,6 @@ class Display {
                 y: Math.floor(i / width)
             }
 
-            // console.log(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
             this.matrix.setPixel(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
         }
         this.update()

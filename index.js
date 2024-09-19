@@ -1,11 +1,16 @@
 const express = require("express");
 const bodyParser = require('body-parser')
 const {Display} = require("./src/classes/Display");
+const {FrameManager} = require("./src/classes/FrameManager");
+const pixels = require('image-pixels');
+const decodeGif = require("decode-gif");
+const {Frame} = require("./src/classes/Frame");
 
 const app = express();
 const PORT = 8000;
 
-let display = new Display(64, 128);
+const display = new Display(64, 128);
+const frameManager = new FrameManager(display)
 
 display.fill({r: 255, g: 255, b: 255})
 display.brightness(0)
@@ -93,7 +98,17 @@ app.post("/gif", async (req, res) => {
         return
     }
 
-    // display.gif(gif)
+    const { width, height, frames } = decodeGif(Buffer.from(base64Data, "base64"));
+
+    console.log("received gif with " + frames.length + " frames")
+
+    for (let i=0; i<frames.length; i++) {
+        const { data, timeCode } = frames[i]
+        frameManager.addQueueFrame(new Frame(new Uint8Array(rgba2rgb(data)), width, height), timeCode)
+    }
+
+    frameManager.startNextFrame()
+
 
     res.send({})
 })

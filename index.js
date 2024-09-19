@@ -2,9 +2,10 @@ const express = require("express");
 const bodyParser = require('body-parser')
 const {Display} = require("./src/classes/Display");
 const {FrameManager} = require("./src/classes/FrameManager");
-const pixels = require('image-pixels');
+// const pixels = require('image-pixels');
 const decodeGif = require("decode-gif");
 const {Frame} = require("./src/classes/Frame");
+const rgba2rgb = require("./src/functions/rgba2rgb")
 
 const app = express();
 const PORT = 8000;
@@ -12,7 +13,7 @@ const PORT = 8000;
 let display = new Display(64, 128);
 let frameManager = new FrameManager(display, null);
 
-display.fill({r: 255, g: 255, b: 255})
+display.fill({r: 50, g: 50, b: 50})
 display.brightness(0)
 
 app.use( bodyParser({ limit: "64mb" }) );

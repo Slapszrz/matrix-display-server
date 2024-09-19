@@ -17,6 +17,7 @@ class FrameManager {
     }
 
     startNextFrame() {
+        console.log(this)
         console.log(this.queue)
         console.log(this.queue.length)
         const currentFrame = this.queue[0]

@@ -16,7 +16,7 @@ class FrameManager {
 
     startNextFrame() {
         const currentFrame = this.queue[0]
-        const onFrameEnd = currentFrame ? this.startNextFrameRecursive : this.clearAll
+        const onFrameEnd = currentFrame ? this.startNextFrame : this.clearAll
 
         console.log("starting next frame")
         console.log(onFrameEnd)
@@ -26,10 +26,6 @@ class FrameManager {
         }).catch(console.error)
 
         this.playCurrentFrame()
-    }
-
-    startNextFrameRecursive() {
-        this.startNextFrame()
     }
 
     playCurrentFrame() {

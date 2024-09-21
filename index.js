@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require('body-parser')
 const {Display} = require("./src/classes/Display");
 const {FrameManager} = require("./src/classes/FrameManager");
-// const pixels = require('image-pixels');
+const pixels = require('image-pixels');
 const decodeGif = require("decode-gif");
 const {Frame} = require("./src/classes/Frame");
 const {rgba2rgb} = require("./src/functions/rgba2rgb")
@@ -86,7 +86,11 @@ app.post("/image", async (req, res) => {
         return
     }
 
-    // display.image(image)
+    const { data, width, height } = await pixels(image)
+
+    const rgbArray = new Uint8Array(rgba2rgb(data))
+
+    display.displayUint8Array( rgbArray, width, height );
 
     res.send({})
 })

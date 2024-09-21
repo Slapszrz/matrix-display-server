@@ -12,29 +12,18 @@ class FrameManager {
     }
 
     addQueueFrame(frame) {
-        console.log("adding frame to queue")
         this.queue.push(frame)
     }
 
     startNextFrame() {
-        console.log(this)
-        console.log(this.queue)
-        console.log(this.queue.length)
         const currentFrame = this.queue[0]
+
         const onFrameEnd = (() => {
-            if (currentFrame) {
-                this.startNextFrame()
-            } else {
-                this.clearAll()
-            }
+            if (currentFrame) this.startNextFrame()
+            else this.clearAll()
         }).bind(this)
 
-        console.log("starting next frame")
-        console.log(onFrameEnd)
-        new Promise(resolve => setTimeout(resolve, currentFrame.frameTime)).then(() => {
-            console.log("frame ended")
-            onFrameEnd()
-        }).catch(console.error)
+        new Promise(resolve => setTimeout(resolve, currentFrame.frameTime)).then(onFrameEnd).catch(console.error)
 
         this.playCurrentFrame()
     }
@@ -42,15 +31,12 @@ class FrameManager {
     playCurrentFrame() {
         const { data, width, height } = this.queue[0]
 
-        console.log("start current frame")
-
         this.display.displayUint8Array(data, width, height)
 
         this.removeCurrentFrame()
     }
 
     removeCurrentFrame() {
-        console.log("removing current frame from queue")
         this.queue.shift()
     }
 

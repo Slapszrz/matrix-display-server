@@ -21,7 +21,13 @@ class FrameManager {
         console.log(this.queue)
         console.log(this.queue.length)
         const currentFrame = this.queue[0]
-        const onFrameEnd = currentFrame ? this.startNextFrame : this.clearAll
+        const onFrameEnd = (() => {
+            if (currentFrame) {
+                this.startNextFrame()
+            } else {
+                this.clearAll()
+            }
+        }).bind(this)
 
         console.log("starting next frame")
         console.log(onFrameEnd)

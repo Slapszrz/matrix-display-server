@@ -114,7 +114,8 @@ app.post("/gif", async (req, res) => {
                 new Uint8Array(rgba2rgb(data)),
                 timeCode,
                 height,
-                width
+                width,
+                true
             ),
         )
     }

@@ -1,3 +1,4 @@
+const {Frame} = require("./Frame");
 
 class FrameManager {
     constructor(display, initialFrames) {
@@ -29,11 +30,14 @@ class FrameManager {
     }
 
     playCurrentFrame() {
-        const { data, width, height } = this.queue[0]
+        const { data, width, height, loopFrame } = this.queue[0]
 
         this.display.displayUint8Array(data, width, height)
 
         this.removeCurrentFrame()
+        if (loopFrame) {
+            this.addQueueFrame(new Frame( data, width, height, loopFrame ))
+        }
     }
 
     removeCurrentFrame() {

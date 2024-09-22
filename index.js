@@ -24,7 +24,7 @@ app.listen(
 )
 
 app.post("/clear", (req, res) => {
-    display.clear();
+    frameManager.clearAll()
 
     res.send({})
 })

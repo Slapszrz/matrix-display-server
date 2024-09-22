@@ -11,18 +11,15 @@ class FrameManager {
     }
 
     addQueueFrame(frame) {
-        console.log("adding new frame to queue")
         this.queue.push(frame)
     }
 
     start() {
-        console.log("starting playback")
         const currentFrame = this.queue[0]
 
         this.display.setUint8Array(currentFrame.data, currentFrame.width, currentFrame.height)
 
         if (currentFrame.loopFrame) {
-            console.log("current frame will be looped, adding to queue")
             this.addQueueFrame(currentFrame)
         }
 
@@ -33,12 +30,9 @@ class FrameManager {
         this.removeCurrentFrameFromQueue()
         this.display.update()
 
-        console.log("starting next frame")
-
         const currentFrame = this.queue[0]
 
         if (!currentFrame) {
-            console.log("no next frame could be found, ending playback")
             return
         }
 
@@ -49,6 +43,8 @@ class FrameManager {
         }
 
         const onFrameEnd = (this.startNextFrame).bind(this)
+
+        console.log("last frame time: " + lastFrameTime)
 
         new Promise(resolve => setTimeout(resolve, lastFrameTime)).then(onFrameEnd).catch(console.error)
     }

@@ -38,18 +38,17 @@ class Display {
         this.update()
     }
 
-    displayUint8Array(rgbArray, width, height) {
+    setUint8Array(rgbArray, width, height) {
         for (let i=0; i < width * height; i++) {
             const j = i * 3
 
-            const position = {
-                x: i%width,
-                y: Math.floor(i / width)
-            }
-
-            this.matrix.setPixel(position.x, position.y, rgbArray[j], rgbArray[j+1], rgbArray[j+2])
+            this.matrix.setPixel(
+                i%width /* x-position */,
+                Math.floor(i / width) /* y-position */,
+                rgbArray[j],
+                rgbArray[j+1],
+                rgbArray[j+2])
         }
-        this.update()
     }
 
     // async image(base64Data) {

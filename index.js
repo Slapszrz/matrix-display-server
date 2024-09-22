@@ -120,8 +120,29 @@ app.post("/gif", async (req, res) => {
         )
     }
 
-    frameManager.startNextFrame()
-
+    frameManager.start()
 
     res.send({})
 })
+
+/*
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+frame in queue
+
+nächsten frame aus queue setzen
+display updaten
+nächsten frame aus queue setzen
+warten bis letzter frame fertig abgespielt wurde
+display updaten
+nächsten frame aus queue setzen
+warten bis letzter frame fertig abgespielt wurde
+display updaten
+*/

@@ -7,40 +7,65 @@ class FrameManager {
     }
 
     setupQueue(initialFrames) {
-        console.log(initialFrames)
         this.queue = initialFrames ? initialFrames : []
-        console.log(this.queue)
     }
 
     addQueueFrame(frame) {
+        console.log("adding new frame to queue")
         this.queue.push(frame)
     }
 
-    startNextFrame() {
+    start() {
+        console.log("starting playback")
         const currentFrame = this.queue[0]
 
-        const onFrameEnd = (() => {
-            if (currentFrame) this.startNextFrame()
-            else this.clearAll()
-        }).bind(this)
+        this.display.setUint8Array(currentFrame.data, currentFrame.width, currentFrame.height)
 
-        new Promise(resolve => setTimeout(resolve, currentFrame.frameTime)).then(onFrameEnd).catch(console.error)
-
-        this.playCurrentFrame()
-    }
-
-    playCurrentFrame() {
-        const { data, width, height, loopFrame } = this.queue[0]
-
-        this.display.displayUint8Array(data, width, height)
-
-        this.removeCurrentFrame()
-        if (loopFrame) {
-            this.addQueueFrame(new Frame( data, width, height, loopFrame ))
+        if (currentFrame.loopFrame) {
+            console.log("current frame will be looped, adding to queue")
+            this.addQueueFrame(currentFrame)
         }
+
+        this.startNextFrame(currentFrame.frameTime)
     }
 
-    removeCurrentFrame() {
+    startNextFrame(lastFrameTime) {
+        this.removeCurrentFrameFromQueue()
+        this.display.update()
+
+        console.log("starting next frame")
+
+        const currentFrame = this.queue[0]
+
+        if (!currentFrame) {
+            console.log("no next frame could be found, ending playback")
+            return
+        }
+
+        this.display.setUint8Array(currentFrame.data, currentFrame.width, currentFrame.height)
+
+        if (currentFrame.loopFrame) {
+            this.addQueueFrame(currentFrame)
+        }
+
+        const onFrameEnd = (this.startNextFrame).bind(this)
+
+        new Promise(resolve => setTimeout(resolve, lastFrameTime)).then(onFrameEnd).catch(console.error)
+    }
+
+    // playCurrentFrame() {
+    //     const { data, width, height, loopFrame } = this.queue[0]
+    //
+    //     this.display.displayUint8Array(data, width, height)
+    //
+    //     this.removeCurrentFrameFromQueue()
+    //
+    //     if (loopFrame) {
+    //         this.addQueueFrame(new Frame( data, width, height, loopFrame ))
+    //     }
+    // }
+
+    removeCurrentFrameFromQueue() {
         this.queue.shift()
     }
 

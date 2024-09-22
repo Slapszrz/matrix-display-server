@@ -110,7 +110,7 @@ app.post("/gif", async (req, res) => {
     let frameTime = 100
 
     if (frames.length > 0) {
-        frameTime = frames[0].timeCode
+        frameTime = frames[1].timeCode
     }
 
     for (let i=0; i<frames.length; i++) {

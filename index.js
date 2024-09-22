@@ -107,15 +107,19 @@ app.post("/gif", async (req, res) => {
 
     console.log("received gif with " + frames.length + " frames")
 
-    for (let i=0; i<frames.length; i++) {
-        const { data, timeCode } = frames[i]
+    let frameTime = 100
 
-        console.log("adding frame with time code: " + timeCode)
+    if (frames.length > 0) {
+        frameTime = frames[0].timeCode
+    }
+
+    for (let i=0; i<frames.length; i++) {
+        const { data } = frames[i]
 
         frameManager.addQueueFrame(
             new Frame(
                 new Uint8Array(rgba2rgb(data)),
-                timeCode,
+                frameTime,
                 height,
                 width,
                 true

@@ -109,6 +109,9 @@ app.post("/gif", async (req, res) => {
 
     for (let i=0; i<frames.length; i++) {
         const { data, timeCode } = frames[i]
+
+        console.log("adding frame with time code: " + timeCode)
+
         frameManager.addQueueFrame(
             new Frame(
                 new Uint8Array(rgba2rgb(data)),

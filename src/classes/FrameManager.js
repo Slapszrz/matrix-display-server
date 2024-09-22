@@ -46,7 +46,7 @@ class FrameManager {
 
         console.log("last frame time: " + lastFrameTime)
 
-        new Promise(resolve => setTimeout(resolve, lastFrameTime)).then(onFrameEnd).catch(console.error)
+        new Promise(resolve => setTimeout(resolve, lastFrameTime)).then(() => onFrameEnd(currentFrame.frameTime)).catch(console.error)
     }
 
     // playCurrentFrame() {

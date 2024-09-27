@@ -38,6 +38,8 @@ app.post("/brightness", (req, res) => {
 
     display.brightness( brightness );
 
+    display.update();
+
     res.send({})
 })
 

@@ -23,8 +23,6 @@ class Display {
     brightness(brightness) {
         if (brightness < 0 || brightness > 100) return
 
-        console.log(brightness)
-
         this.matrix.brightness(brightness)
     }
 

@@ -90,12 +90,14 @@ app.post("/image", async (req, res) => {
 
     const rgbArray = new Uint8Array(rgba2rgb(data))
 
-    display.displayUint8Array( rgbArray, width, height );
+    display.setUint8Array( rgbArray, width, height );
+
+    display.update()
 
     res.send({})
 })
 
-app.post("/gif", async (req, res) => {
+app.post("/gif", (req, res) => {
     const { gif } = req.body;
 
     if (!gif) {
@@ -131,25 +133,3 @@ app.post("/gif", async (req, res) => {
 
     res.send({})
 })
-
-/*
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-frame in queue
-
-nächsten frame aus queue setzen
-display updaten
-nächsten frame aus queue setzen
-warten bis letzter frame fertig abgespielt wurde
-display updaten
-nächsten frame aus queue setzen
-warten bis letzter frame fertig abgespielt wurde
-display updaten
-*/

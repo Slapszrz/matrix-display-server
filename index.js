@@ -14,7 +14,6 @@ let display = new Display(64, 128);
 let frameManager = new FrameManager(display, null);
 
 display.fill({r: 50, g: 50, b: 50})
-display.brightness(0)
 
 app.use( bodyParser({ limit: "64mb" }) );
 

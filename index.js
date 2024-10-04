@@ -6,12 +6,16 @@ const pixels = require('image-pixels');
 const decodeGif = require("decode-gif");
 const {Frame} = require("./src/classes/Frame");
 const {rgba2rgb} = require("./src/functions/rgba2rgb")
+const {ModeManager} = require("./src/classes/ModeManager");
+const {createCanvas} = require("canvas");
 
 const app = express();
 const PORT = 8000;
+const displayDimension = { x: 128, y: 64 }
 
-let display = new Display(64, 128);
+let display = new Display(displayDimension.y, displayDimension.x);
 let frameManager = new FrameManager(display, null);
+let modeManager = new ModeManager(displayDimension, frameManager, "NONE");
 
 display.fill({r: 50, g: 50, b: 50})
 
@@ -108,8 +112,6 @@ app.post("/gif", (req, res) => {
 
     const { width, height, frames } = decodeGif(Buffer.from(gif, "base64"));
 
-    console.log("received gif with " + frames.length + " frames")
-
     let frameTime = 100
 
     if (frames.length > 0) {
@@ -131,6 +133,18 @@ app.post("/gif", (req, res) => {
     }
 
     frameManager.start()
+
+    res.send({})
+})
+
+app.post("/mode", async (req, res) => {
+    const { mode } = req.body;
+
+    if (!mode) {
+        res.status(400).send({message: "Missing field 'mode'."})
+    }
+
+    modeManager.changeMode(mode)
 
     res.send({})
 })

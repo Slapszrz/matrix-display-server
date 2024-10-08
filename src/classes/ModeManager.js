@@ -41,7 +41,7 @@ class ModeManager {
         context.font = "bold 10pt 'PT Sans'";
         context.textAlign = "center";
         context.fillStyle = "#fff";
-        context.fillText("Text", 50, 25);
+        context.fillText(new Date().getDate().toString(), 50, 25);
 
         const frame = new Frame(
             rgba2rgb(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data),

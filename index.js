@@ -17,7 +17,7 @@ let display = new Display(displayDimension.y, displayDimension.x);
 let frameManager = new FrameManager(display, null);
 let modeManager = new ModeManager(displayDimension, frameManager, "CLOCK");
 
-display.fill({r: 50, g: 50, b: 50})
+// display.fill({r: 50, g: 50, b: 50})
 
 app.use( bodyParser({ limit: "64mb" }) );
 

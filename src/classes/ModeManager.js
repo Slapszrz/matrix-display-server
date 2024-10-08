@@ -41,10 +41,18 @@ class ModeManager {
         context.fillStyle = "#fff";
         context.fillText("Text", 0, 0);
 
-        const buffer = new Uint8Array(canvas.toBuffer("image/png"));
 
-        this.frameManager.addQueueFrame(buffer)
-        console.log(buffer)
+        const buffer = canvas.toBuffer("image/png").buffer;
+        const frame = new Frame(
+            new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+            1000,
+            canvas.height,
+            canvas.width,
+            false
+        );
+
+        this.frameManager.addQueueFrame(frame)
+        console.log(frame)
         this.frameManager.start()
     }
 }

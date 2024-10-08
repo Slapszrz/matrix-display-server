@@ -43,9 +43,9 @@ class ModeManager {
         context.fillText("Text", 0, 0);
 
 
-        const buffer = canvas.toBuffer("image/png").buffer;
+        // const buffer = canvas.toBuffer("image/png").buffer;
         const frame = new Frame(
-            new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+            canvas.toBuffer("image/png").buffer,
             1000,
             canvas.height,
             canvas.width,

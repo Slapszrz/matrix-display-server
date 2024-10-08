@@ -15,7 +15,7 @@ const displayDimension = { x: 128, y: 64 }
 
 let display = new Display(displayDimension.y, displayDimension.x);
 let frameManager = new FrameManager(display, null);
-let modeManager = new ModeManager(displayDimension, frameManager, "NONE");
+let modeManager = new ModeManager(displayDimension, frameManager, "CLOCK");
 
 display.fill({r: 50, g: 50, b: 50})
 

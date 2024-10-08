@@ -43,7 +43,7 @@ class ModeManager {
         context.fillText("Text", 50, 25);
 
         const frame = new Frame(
-            context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y),
+            context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data,
             1000,
             canvas.height,
             canvas.width,

@@ -22,6 +22,7 @@ class ModeManager {
                 return;
             case "CLOCK":
                 this.clock()
+                break;
             default:
                 return;
         }

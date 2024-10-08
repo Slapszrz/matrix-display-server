@@ -15,6 +15,7 @@ class FrameManager {
     }
 
     start() {
+        console.log(`starting with ${this.queue.length} frames`)
         const currentFrame = this.queue[0]
 
         this.display.setUint8Array(currentFrame.data, currentFrame.width, currentFrame.height)

@@ -45,7 +45,7 @@ class ModeManager {
 
         // const buffer = canvas.toBuffer("image/png").buffer;
         const frame = new Frame(
-            canvas.toBuffer("image/png").buffer,
+            canvas.toBuffer("image/png"),
             1000,
             canvas.height,
             canvas.width,

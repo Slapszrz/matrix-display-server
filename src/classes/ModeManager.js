@@ -40,9 +40,9 @@ class ModeManager {
         context.fillStyle = "#fff";
         context.fillText("Text", 0, 0);
 
-        const stream = canvas.createPNGStream();
-        this.frameManager.addQueueFrame(stream)
-        console.log(stream)
+        const buffer = canvas.toBuffer("image/png");
+        this.frameManager.addQueueFrame(buffer)
+        console.log(buffer)
         this.frameManager.start()
     }
 }

@@ -31,7 +31,6 @@ class ModeManager {
     }
 
     async clock() {
-        console.log(this.displayDimensions)
         const canvas = createCanvas(this.displayDimensions.x, this.displayDimensions.y);
         const context = canvas.getContext("2d", { alpha: false });
 
@@ -42,10 +41,6 @@ class ModeManager {
         context.textAlign = "right"
 
         const date = new Date();
-
-        console.log(getHoursAndMinutes(date))
-        console.log(getSeconds(date))
-        console.log(getDateString(date))
 
         function getHoursAndMinutes(date) {
             return date.getHours().toString() + ":" + date.getMinutes().toString()
@@ -62,9 +57,10 @@ class ModeManager {
 
         context.font = "bold 10pt 'PT Sans'";
         context.textAlign = "left";
-        context.fillText(getHoursAndMinutes(date), 0, 12);
-        context.fillText(getSeconds(date), 0, 26);
-        context.fillText(getDateString(date), 0, 40);
+        context.fillText(getDateString(date), 0, 12);
+        context.fillText(getHoursAndMinutes(date), 0, 26);
+        context.font = "bold 5pt 'PT Sans'";
+        context.fillText(getSeconds(date), context.wi, 40);
 
         const frame = new Frame(
             rgba2rgb(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data),
@@ -75,7 +71,6 @@ class ModeManager {
         );
 
         this.frameManager.addQueueFrame(frame)
-        console.log(frame)
         this.frameManager.start()
     }
 }

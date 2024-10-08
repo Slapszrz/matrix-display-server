@@ -33,13 +33,13 @@ class ModeManager {
     async clock() {
         console.log(this.displayDimensions)
         const canvas = createCanvas(this.displayDimensions.x, this.displayDimensions.y);
-        const context = canvas.getContext("2d", { alpha: false,  });
+        const context = canvas.getContext("2d", { alpha: false });
 
         context.fillStyle = "#764abc";
         context.fillRect(0, 0, this.displayDimensions.x, this.displayDimensions.y);
 
         context.fillStyle = "#fff";
-        context.textAlign = "left"
+        context.textAlign = "right"
 
         const date = new Date();
 

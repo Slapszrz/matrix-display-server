@@ -1,5 +1,6 @@
 const {createCanvas} = require("canvas");
 const {Frame} = require("./Frame");
+const {rgba2rgb} = require("../functions/rgba2rgb");
 
 class ModeManager {
     constructor(displayDimensions, frameManager, mode) {
@@ -43,7 +44,7 @@ class ModeManager {
         context.fillText("Text", 50, 25);
 
         const frame = new Frame(
-            context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data,
+            rgba2rgb(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data),
             1000,
             canvas.height,
             canvas.width,

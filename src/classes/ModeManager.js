@@ -29,6 +29,7 @@ class ModeManager {
     }
 
     async clock() {
+        console.log(this.displayDimensions)
         const canvas = createCanvas(this.displayDimensions.x, this.displayDimensions.y);
         const context = canvas.getContext("2d", { alpha: false,  });
 

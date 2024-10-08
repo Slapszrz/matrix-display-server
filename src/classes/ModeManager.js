@@ -30,7 +30,7 @@ class ModeManager {
 
     async clock() {
         const canvas = createCanvas(this.displayDimensions.x, this.displayDimensions.y);
-        const context = canvas.getContext("2d");
+        const context = canvas.getContext("2d", { alpha: false });
 
         context.fillStyle = "#764abc";
         context.fillRect(0, 0, this.displayDimensions.x, this.displayDimensions.y);
@@ -40,9 +40,9 @@ class ModeManager {
         context.fillStyle = "#fff";
         context.fillText("Text", 0, 0);
 
-        const buffer = canvas.toBuffer("image/png");
-        this.frameManager.addQueueFrame(buffer)
-        console.log(buffer)
+        const stream = canvas.createPNGStream();
+        this.frameManager.addQueueFrame(stream)
+        console.log(stream)
         this.frameManager.start()
     }
 }

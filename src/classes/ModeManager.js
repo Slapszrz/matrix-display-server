@@ -42,6 +42,7 @@ class ModeManager {
 
         const buffer = canvas.toBuffer("image/png");
         this.frameManager.addQueueFrame(buffer)
+        console.log(buffer)
         this.frameManager.start()
     }
 }

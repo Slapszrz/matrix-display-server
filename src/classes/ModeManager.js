@@ -38,10 +38,32 @@ class ModeManager {
         context.fillStyle = "#764abc";
         context.fillRect(0, 0, this.displayDimensions.x, this.displayDimensions.y);
 
+        context.fillStyle = "#fff";
+
+        const date = new Date();
+
+        console.log(getHoursAndMinutes(date))
+        console.log(getSeconds(date))
+        console.log(getDateString(date))
+
+        function getHoursAndMinutes(date) {
+            return date.getHours().toString() + ":" + date.getMinutes().toString()
+        }
+
+        function getSeconds(date) {
+            return date.getSeconds()
+        }
+
+        function getDateString(date) {
+            return date.getDay().toString() + "." + date.getMonth().toString() + "." + date.getFullYear().toString()
+        }
+
+
         context.font = "bold 10pt 'PT Sans'";
         context.textAlign = "center";
-        context.fillStyle = "#fff";
-        context.fillText(new Date().getDate().toString(), 50, 25);
+        context.fillText(getHoursAndMinutes(date), 10, 10);
+        context.fillText(getSeconds(date), 10, 24);
+        context.fillText(getDateString(date), 10, 38);
 
         const frame = new Frame(
             rgba2rgb(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data),

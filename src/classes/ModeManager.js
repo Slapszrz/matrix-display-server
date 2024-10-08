@@ -1,4 +1,5 @@
 const {createCanvas} = require("canvas");
+const {Frame} = require("./Frame");
 
 class ModeManager {
     constructor(displayDimensions, frameManager, mode) {

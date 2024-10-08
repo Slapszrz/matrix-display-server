@@ -42,6 +42,7 @@ class ModeManager {
         context.fillStyle = "#fff";
         context.fillText("Text", 0, 0);
 
+        console.log(canvas.toDataURL());
 
         // const buffer = canvas.toBuffer("image/png").buffer;
         const frame = new Frame(

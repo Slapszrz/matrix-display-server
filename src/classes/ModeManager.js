@@ -40,14 +40,10 @@ class ModeManager {
         context.font = "bold 10pt 'PT Sans'";
         context.textAlign = "center";
         context.fillStyle = "#fff";
-        context.fillText("Text", 0, 0);
+        context.fillText("Text", 50, 25);
 
-        console.log(canvas.toDataURL());
-        console.log(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y))
-
-        // const buffer = canvas.toBuffer("image/png").buffer;
         const frame = new Frame(
-            canvas.toBuffer("image/png"),
+            context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y),
             1000,
             canvas.height,
             canvas.width,

@@ -39,6 +39,7 @@ class ModeManager {
         context.fillRect(0, 0, this.displayDimensions.x, this.displayDimensions.y);
 
         context.fillStyle = "#fff";
+        context.textAlign = "left"
 
         const date = new Date();
 

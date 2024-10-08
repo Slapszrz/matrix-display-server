@@ -61,7 +61,7 @@ class ModeManager {
 
 
         context.font = "bold 10pt 'PT Sans'";
-        context.textAlign = "center";
+        context.textAlign = "left";
         context.fillText(getHoursAndMinutes(date), 50, 12);
         context.fillText(getSeconds(date), 50, 26);
         context.fillText(getDateString(date), 50, 40);

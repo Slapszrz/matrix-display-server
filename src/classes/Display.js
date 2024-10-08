@@ -37,13 +37,8 @@ class Display {
     }
 
     setUint8Array(rgbArray, width, height) {
-        console.log(rgbArray)
         for (let i=0; i < width * height; i++) {
             const j = i * 3
-
-            console.log(rgbArray[j])
-            console.log(rgbArray[j+1])
-            console.log(rgbArray[j+2])
 
             this.matrix.setPixel(
                 i%width /* x-position */,

@@ -43,6 +43,7 @@ class ModeManager {
         context.fillText("Text", 0, 0);
 
         console.log(canvas.toDataURL());
+        console.log(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y))
 
         // const buffer = canvas.toBuffer("image/png").buffer;
         const frame = new Frame(

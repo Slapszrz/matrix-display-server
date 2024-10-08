@@ -41,6 +41,9 @@ class ModeManager {
         context.fillText("Text", 0, 0);
 
         const buffer = canvas.toBuffer("image/png").buffer;
+        for (let i=0; i<frames.length; i++) {
+            console.log(buffer[i])
+        }
         this.frameManager.addQueueFrame(buffer)
         console.log(buffer)
         this.frameManager.start()

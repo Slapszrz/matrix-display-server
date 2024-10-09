@@ -48,25 +48,6 @@ class Display {
                 rgbArray[j+2])
         }
     }
-
-    // async image(base64Data) {
-    //     const { data, width, height } = await pixels(base64Data)
-    //
-    //     const rgbArray = new Uint8Array(rgba2rgb(data))
-    //
-    //     this.displayUint8Array(rgbArray, width, height)
-    // }
-    //
-    // async gif(base64Data) {
-    //     const { width, height, frames } = decodeGif(Buffer.from(base64Data, "base64"));
-    //
-    //     for (let i=0; i<frames.length; i++) {
-    //         const { data, timeCode } = frames[i]
-    //
-    //         this.displayUint8Array(new Uint8Array(rgba2rgb(data)), width, height)
-    //         await sleep(timeCode)
-    //     }
-    // }
 }
 
 module.exports.Display=Display

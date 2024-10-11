@@ -60,7 +60,7 @@ class ModeManager {
         context.fillText(getDateString(date), 0, 22);
         context.fillText(getHoursAndMinutes(date), 0, 46);
         context.font = "bold 5pt 'PT Sans'";
-        context.fillText(getSeconds(date), 72, 26);
+        context.fillText(getSeconds(date), 72, 46);
 
         const frame = new Frame(
             rgba2rgb(context.getImageData(0, 0, this.displayDimensions.x, this.displayDimensions.y).data),
